@@ -25,6 +25,13 @@ int main()
                 "\tgeneric(n: natural);\n"
                 "\tport(\n";
 
+    // input ports
+    int numberOfInputs = pow(2, muxSelectSize);
+    for (size_t i = 0; i < numberOfInputs; i++)
+    {
+        vhdlFile << "\t\tinp_"<< i << ": in std_logic_vector" << "(n-1 downto 0);" << endl;
+    }
+
     vhdlFile << "\t\tsel: in std_logic_vector(3 downto 0);\n"
                 "\t\tdataout: out std_logic_vector(n-1 downto 0)\n"
                 "\t);\n"
