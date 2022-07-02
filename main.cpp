@@ -56,7 +56,7 @@ int main()
                 "\tbegin\n";
     for (size_t i = 0; i < numberOfInputs; i++)
     {
-        vhdlFile << "\t\tif(sel = \"" << std::bitset<4>(i) << "\") then\n"
+        vhdlFile << "\t\tif(sel = \"" << std::bitset<muxSelectSize>(i) << "\") then\n"
                     "\t\t\tdataout <= inp_" << i << ";\n";
     }
     vhdlFile << "\t\tend if;\n"
