@@ -5,6 +5,7 @@
 #include <fstream>
 #include <iostream>
 #include <cmath>
+#include <bitset>
 using namespace std;
 
 int main()
@@ -32,10 +33,32 @@ int main()
         vhdlFile << "\t\tinp_"<< i << ": in std_logic_vector" << "(n-1 downto 0);" << endl;
     }
 
-    vhdlFile << "\t\tsel: in std_logic_vector(3 downto 0);\n"
+    vhdlFile << "\t\tselector: in std_logic_vector(3 downto 0);\n"
                 "\t\tdataout: out std_logic_vector(n-1 downto 0)\n"
                 "\t);\n"
                 "end entity;\n\n";
+                
+    // architecture part
+    vhdlFile << "architecture behavioral of " << "mux_" << muxSelectSize << " is\n"
+                "begin\n";
 
+    // process part
+    vhdlFile << "\tprocess(";
+    for (size_t i = 0; i < numberOfInputs; i++)
+    {
+        vhdlFile << "inp_" << i << ", ";
+    }
+    vhdlFile << "selector"
+                ") is\n"
+                "\tbegin\n";
+    for (size_t i = 0; i < numberOfInputs; i++)
+    {
+        vhdlFile << "\t\tif(sel = \"" << std::bitset<4>(i) << "\") then\n"
+                    "\t\t\tdataout <= inp_" << i << ";\n";
+    }
+    vhdlFile << "\t\tend if;\n"
+                "\tend process;\n";
+
+    vhdlFile << "end architecture;";
     return 0;
 }
