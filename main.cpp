@@ -10,11 +10,13 @@ using namespace std;
 
 int main()
 {
-    unsigned int muxSelectSize;
+    unsigned int muxSelectSize, numberOfBits;
 
     cout << "--- bitbit ---" << endl;
     cout << "Enter Mux select size : ";
     cin >> muxSelectSize;
+    cout << "How many bits are the inputs and output bits? ";
+    cin >> numberOfBits;
     ofstream vhdlFile("main.vhd", ios::out);
 
     // Write vhdl file with syntax rules
@@ -23,7 +25,7 @@ int main()
 
     // entity part
     vhdlFile <<  "entity mux_" << muxSelectSize <<  " is\n"
-                "\tgeneric(n: natural);\n"
+                "\tgeneric(n: natural := " << numberOfBits << ");\n"
                 "\tport(\n";
 
     // input ports
@@ -54,9 +56,11 @@ int main()
     vhdlFile << "selector"
                 ") is\n"
                 "\tbegin\n";
-    for (size_t i = 0; i < numberOfInputs; i++)
+    vhdlFile << "\t\tif(selector = \"" << std::bitset<8>(0) << "\") then\n"
+        "\t\t\tdataout <= inp_" << 0 << ";\n";
+    for (size_t i = 1; i < numberOfInputs; i++)
     {
-        vhdlFile << "\t\tif(sel = \"" << std::bitset<muxSelectSize>(i) << "\") then\n"
+        vhdlFile << "\t\telsif(selector = \"" << std::bitset<8>(i) << "\") then\n"
                     "\t\t\tdataout <= inp_" << i << ";\n";
     }
     vhdlFile << "\t\tend if;\n"
