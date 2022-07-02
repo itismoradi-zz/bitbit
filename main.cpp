@@ -51,6 +51,11 @@ int main()
     vhdlFile << "\tprocess(";
     for (size_t i = 0; i < numberOfInputs; i++)
     {
+        if (i % 8 == 7)
+        {
+            vhdlFile << endl << "\t        ";
+        }
+        
         vhdlFile << "inp_" << i << ", ";
     }
     vhdlFile << "selector"
