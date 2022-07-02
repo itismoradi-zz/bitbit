@@ -37,7 +37,10 @@ int main()
                 "\t\tdataout: out std_logic_vector(n-1 downto 0)\n"
                 "\t);\n"
                 "end entity;\n\n";
-                
+    
+    // Entity Architecture separator line
+    vhdlFile << "-------------- architecture --------------\n\n";
+
     // architecture part
     vhdlFile << "architecture behavioral of " << "mux_" << muxSelectSize << " is\n"
                 "begin\n";
