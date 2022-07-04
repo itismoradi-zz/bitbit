@@ -4,3 +4,4 @@ test/
 *.vhdl
 *.exe
 .vscode/settings.json
+build/

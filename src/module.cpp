@@ -1,10 +1,17 @@
 #include "module.hpp"
 using namespace std;
 
-Module::Module(ofstream file)
+Module::Module()
 {
+    
+}
+
+Module::Module(fstream file)
+{
+    
 }
 
 Module::~Module()
 {
+
 }

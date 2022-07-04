@@ -8,6 +8,7 @@
 class Module
 {
 public:
+    Module();
     Module(std::fstream);
     virtual Module & create() = 0;
     ~Module();

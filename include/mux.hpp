@@ -8,7 +8,7 @@ class Mux : public Module
 {
 public:
     Mux(std::fstream, unsigned int, unsigned int);
-    virtual Module & create() override;
+    //virtual Module & create() override;
 private:
     
 };
