@@ -3,7 +3,7 @@
 
 #include <string>
 
-class entity
+class Entity
 {
 public:
     

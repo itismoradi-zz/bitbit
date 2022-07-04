@@ -3,7 +3,7 @@
 
 #include <string>
 
-class architecture
+class Architecture
 {
 public:
 

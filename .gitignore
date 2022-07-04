@@ -2,3 +2,5 @@ test/
 *.py
 *.vhd
 *.vhdl
+*.exe
+.vscode/settings.json
